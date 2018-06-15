@@ -1,6 +1,5 @@
 package cn.woyeshi.presenter.base
 
-import io.reactivex.Flowable
 import io.reactivex.disposables.Disposable
 
 /**
@@ -14,7 +13,7 @@ interface IBaseView {
 
     fun logE(tag: String, content: String)
 
-    fun <T> addSubscription(flowable: Flowable<T>)
+    fun addSubscription(disposable: Disposable)
 
     fun onDestroy()
 

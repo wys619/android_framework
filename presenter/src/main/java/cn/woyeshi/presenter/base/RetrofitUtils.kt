@@ -2,13 +2,13 @@ package cn.woyeshi.presenter.base
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitUtils {
 
-    private val BASE_URL = "http://www.woyeshi.cn/"
+    private val BASE_URL = "http://192.168.56.1:8080/"
 
     private var retrofit: Retrofit? = null
 
@@ -35,7 +35,7 @@ object RetrofitUtils {
             retrofit = Retrofit.Builder()
                     .client(builder.build())
                     .baseUrl(BASE_URL)
-                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
         }

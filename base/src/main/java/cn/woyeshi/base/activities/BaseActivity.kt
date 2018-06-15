@@ -10,13 +10,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import cn.woyeshi.base.R
 import cn.woyeshi.base.dialogs.LoadingDialog
-import cn.woyeshi.base.utils.AnnotationUtils
 import cn.woyeshi.presenter.base.IBaseActivity
-import io.reactivex.Flowable
-import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
-import rx.subscriptions.CompositeSubscription
 
 /**
  * Created by wys on 2017/11/8.
@@ -27,12 +23,13 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     private var backBtn: View? = null
     private var tvTitleBar: TextView? = null
+    private var disposables: CompositeDisposable? = null
 
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onActivityCreateStart(savedInstanceState)
         setContentView(R.layout.activity_base)
-        AnnotationUtils.bind(this)
+//        AnnotationUtils.bind(this)
         val baseViewContainer = findViewById<LinearLayout>(R.id.ll_base_layout_container)
         if (isHaveTitleBar() && getTitleLayoutID() != 0) {
             LayoutInflater.from(this).inflate(getTitleLayoutID(), baseViewContainer)
@@ -42,14 +39,15 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
         }
         backBtn = findViewById(R.id.iv_back)
         tvTitleBar = findViewById(R.id.tv_title)
-        backBtn?.setOnClickListener({
+        backBtn?.setOnClickListener {
             onBackBtnClick()
-        })
+        }
         onActivityCreated(savedInstanceState)
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        disposables?.clear()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
@@ -62,11 +60,14 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     /**
      * 添加Subscription
-     * @param subscription
+     * @param disposable
      */
-    override fun <T> addSubscription(flowable: Flowable<T>) {
+    override fun addSubscription(disposable: Disposable) {
         Log.d(tag, "addSubscription()")
-        flowable.subscribeOn(Schedulers.newThread()).observeOn(AndroidSchedulers.mainThread())
+        if (disposables == null || disposables?.isDisposed!!) {
+            disposables = CompositeDisposable()
+        }
+        disposables?.add(disposable)
     }
 
     open fun isHaveTitleBar(): Boolean {
