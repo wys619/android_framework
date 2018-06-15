@@ -1,0 +1,33 @@
+<resources>
+
+<!--     <dimen name="super_super_extra_large_text_size">120px</dimen>
+    <dimen name="super_extra_large_text_size">100px</dimen>
+    <dimen name="extra_large_text_size">80px</dimen>
+    <dimen name="super_large_text_size">72px</dimen>
+    <dimen name="large_text_size">64px</dimen>
+    <dimen name="medium_text_size">56px</dimen>
+    <dimen name="small_text_size">48px</dimen>
+    <dimen name="extra_small_text_size">40px</dimen> -->
+
+
+    <dimen name="text_size_t12">264px</dimen>
+    <dimen name="text_size_t11">216px</dimen>
+    <dimen name="text_size_t10">120px</dimen>
+    <dimen name="text_size_t9">108px</dimen>
+    <dimen name="text_size_t8_2">96px</dimen>
+    <dimen name="text_size_t8">88px</dimen>
+    <dimen name="text_size_t7_1_1">72px</dimen>
+    <dimen name="text_size_t7_1">64px</dimen>
+    <dimen name="text_size_t7_2">80px</dimen>
+    <dimen name="text_size_t7">60px</dimen>
+    <dimen name="text_size_t6">54px</dimen>
+    <dimen name="text_size_t5">54px</dimen>
+    <dimen name="text_size_t4">52px</dimen>
+    <dimen name="text_size_t3_2">52px</dimen>
+    <dimen name="text_size_t3">48px</dimen>
+    <dimen name="text_size_t2">44px</dimen>
+    <dimen name="text_size_t1_2">40px</dimen>
+    <dimen name="text_size_t1">36px</dimen>
+    <dimen name="text_size_t0">32px</dimen>
+    <dimen name="text_size_t0s">28px</dimen>
+</resources>

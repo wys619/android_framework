@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.ext.compile_sdk_version
+
+
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.mini_sdk_version
+        targetSdkVersion rootProject.ext.target_sdk_version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$appcompat_v7_version"
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "com.android.support.test:runner:$test_runner_version"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espresso_core_version"
+
+    //anko
+    api "org.jetbrains.anko:anko:$anko_version"
+
+    //fresco family
+    api 'com.facebook.fresco:fresco:0.14.1'
+    api 'com.facebook.fresco:animated-gif:0.14.1'
+    api "com.facebook.fresco:imagepipeline-okhttp3:0.14.1"
+
+    //okhttp
+    api 'com.squareup.okhttp3:okhttp:3.9.1'
+
+    //rx family
+    api "io.reactivex.rxjava2:rxjava:2.1.14"
+    api 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    //multidex
+    api 'com.android.support:multidex:1.0.3'
+
+    api 'com.squareup.retrofit2:retrofit:2.3.0'     //retrofit
+    api 'com.google.code.gson:gson:2.8.0'           //Gson 库
+
+    api 'com.squareup.retrofit2:converter-gson:2.3.0'       //转换器，请求结果转换成Model
+    api 'com.squareup.retrofit2:adapter-rxjava:2.1.0'       //配合Rxjava 使用
+
+}

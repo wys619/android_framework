@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- text size -->
+  <!--   <dimen name="super_super_extra_large_text_size">54px</dimen>
+    <dimen name="super_extra_large_text_size">44px</dimen>
+    <dimen name="extra_large_text_size">36px</dimen>
+    <dimen name="super_large_text_size">32px</dimen>
+    <dimen name="large_text_size">30px</dimen>
+    <dimen name="medium_text_size">28px</dimen>
+    <dimen name="small_text_size">24px</dimen>
+    <dimen name="extra_small_text_size">22px</dimen>
+    <dimen name="hit_text_size">32px</dimen>
+    <dimen name="chatting_item_face_size">40px</dimen>
+    <dimen name="message_item_face_size">36px</dimen> -->
+    
+    
+    <!-- summer style -->
+    <dimen name="text_size_t12">88px</dimen>
+    <dimen name="text_size_t11">72px</dimen>
+    <dimen name="text_size_t10">60px</dimen>
+    <dimen name="text_size_t9">54px</dimen>
+    <dimen name="text_size_t8_2">48px</dimen>
+    <dimen name="text_size_t8">44px</dimen>
+    <dimen name="text_size_t7_2">40px</dimen>
+    <dimen name="text_size_t7_1_1">36px</dimen>
+    <dimen name="text_size_t7_1">32px</dimen>
+    <dimen name="text_size_t7">30px</dimen>
+    <dimen name="text_size_t6">28px</dimen>
+    <dimen name="text_size_t5">28px</dimen>
+    <dimen name="text_size_t4">26px</dimen>
+    <dimen name="text_size_t3_2">26px</dimen>
+    <dimen name="text_size_t3">24px</dimen>
+    <dimen name="text_size_t2">22px</dimen>
+    <dimen name="text_size_t1">18px</dimen>
+    <dimen name="text_size_t1_2">20px</dimen>
+    <dimen name="text_size_t0">16px</dimen>
+    <dimen name="text_size_t0s">14px</dimen>
+    <!--  -->
+
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Splash" parent="ImageTranslucentTheme">
+        <item name="android:windowBackground">@color/colorAccent</item>
+    </style>
+
+    <style name="ImageTranslucentTheme" parent="AppTheme">
+        <!--在Android 4.4之前的版本上运行，直接跟随系统主题-->
+    </style>
+
+    <style name="shareDialogStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:fadeEnabled">true</item>
+        <item name="android:fadeDuration">1500</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">50</item>
+        <item name="android:shadowDy">50</item>
+        <item name="android:shadowRadius">0</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_t9">46px</dimen>
+    <dimen name="text_size_t8">34px</dimen>
+    <dimen name="text_size_t7">26px</dimen>
+    <dimen name="text_size_t6">24px</dimen>
+    <dimen name="text_size_t5">22px</dimen>
+    <dimen name="text_size_t0">10px</dimen>
+    <dimen name="text_size_t4">20px</dimen>
+    <dimen name="text_size_t3">18px</dimen>
+    <dimen name="text_size_t2">14px</dimen>
+    <dimen name="text_size_t1">12px</dimen>
+    <dimen name="text_size_t0_1">11px</dimen>
+
+    
+    
+</resources>
