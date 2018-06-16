@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import cn.woyeshi.base.R
 import cn.woyeshi.base.dialogs.LoadingDialog
+import cn.woyeshi.base.utils.AnnotationUtils
 import cn.woyeshi.presenter.base.IBaseActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -19,17 +20,16 @@ import io.reactivex.disposables.Disposable
  */
 abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
-    val tag: String = javaClass.simpleName
+    val TAG: String = javaClass.simpleName
 
     private var backBtn: View? = null
     private var tvTitleBar: TextView? = null
-    private var disposables: CompositeDisposable? = null
 
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onActivityCreateStart(savedInstanceState)
         setContentView(R.layout.activity_base)
-//        AnnotationUtils.bind(this)
+        AnnotationUtils.bind(this)
         val baseViewContainer = findViewById<LinearLayout>(R.id.ll_base_layout_container)
         if (isHaveTitleBar() && getTitleLayoutID() != 0) {
             LayoutInflater.from(this).inflate(getTitleLayoutID(), baseViewContainer)
@@ -47,7 +47,6 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     override fun onDestroy() {
         super.onDestroy()
-        disposables?.clear()
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
@@ -56,18 +55,6 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
             return true
         }
         return super.onKeyDown(keyCode, event)
-    }
-
-    /**
-     * 添加Subscription
-     * @param disposable
-     */
-    override fun addSubscription(disposable: Disposable) {
-        Log.d(tag, "addSubscription()")
-        if (disposables == null || disposables?.isDisposed!!) {
-            disposables = CompositeDisposable()
-        }
-        disposables?.add(disposable)
     }
 
     open fun isHaveTitleBar(): Boolean {

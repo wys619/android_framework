@@ -1,1 +1,1 @@
-include ':app', ':entity', ':base', ':presenter', ':presenterimpl', ':libs'
+include ':app', ':entity', ':base', ':presenter', ':presenterimpl', ':libs', ":lib_ucrop"

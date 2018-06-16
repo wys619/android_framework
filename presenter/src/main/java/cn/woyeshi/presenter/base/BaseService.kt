@@ -7,10 +7,7 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by wys on 2017/11/8.
  */
-open class BaseService<V : IBaseView> constructor(v: V) : IBaseService {
-
-    protected val iView = v
-
+open class BaseService: IBaseService {
     /**
      *
      * @param flowAble
