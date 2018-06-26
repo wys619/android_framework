@@ -150,7 +150,7 @@ public abstract class BaseDialog implements DialogInterface.OnCancelListener, Di
      * @return
      */
     protected int getWidth() {
-        return DensityUtil.dip2px(activity, 280);
+        return DensityUtil.INSTANCE.dip2px(activity, 280);
     }
 
     //是否启用高斯模糊遮罩，默认是true，要修改交互请覆盖这个方法
