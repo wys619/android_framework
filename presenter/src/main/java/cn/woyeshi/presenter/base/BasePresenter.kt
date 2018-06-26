@@ -16,11 +16,10 @@ abstract class BasePresenter<T : IBaseView>(val iView: T) : IBasePresenter<T> {
             disposables = CompositeDisposable()
         }
         disposables?.add(disposable)
-
     }
 
     override fun onDestroy() {
-        Log.i(tag, "addSubscription()")
+        Log.i(tag, "onDestroy()")
         disposables?.clear()
     }
 
