@@ -1,7 +1,7 @@
 package cn.woyeshi.presenter.base
 
 import cn.woyeshi.entity.BaseResponse
-import io.reactivex.Observable
+import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -15,11 +15,8 @@ open class BaseService : IBaseService {
      * @param <T>
      * @return
     </T> */
-    protected fun <E> observe(observable: Observable<BaseResponse<E>>): Observable<E> {
+    protected fun <E> observe(observable: Flowable<BaseResponse<E>>): Flowable<BaseResponse<E>> {
         return observable
-                .map({
-                    it.data
-                })
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
     }
