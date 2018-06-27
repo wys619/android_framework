@@ -7,4 +7,6 @@ data class UserInfo(@SerializedName("password")
                     @SerializedName("userName")
                     val userName: String = "",
                     @SerializedName("userId")
-                    val userId: String = "")
+                    val userId: String = "",
+                    @SerializedName("token")
+                    val token: String = "")
