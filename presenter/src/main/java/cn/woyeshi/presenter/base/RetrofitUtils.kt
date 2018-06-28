@@ -1,6 +1,8 @@
 package cn.woyeshi.presenter.base
 
+import cn.woyeshi.presenter.BuildConfig
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -8,7 +10,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitUtils {
 
-    private val BASE_URL = "http://192.168.248.55:8080/"
+    //    private val BASE_URL = "http://192.168.248.55:8080/"
+    private val BASE_URL = "http://192.168.56.1:8080/"
 
     private var retrofit: Retrofit? = null
 
@@ -31,6 +34,16 @@ object RetrofitUtils {
                     .addHeaderParams("userId", "123445")
                     .build()
             builder.addInterceptor(commonInterceptor)
+
+
+            val logInterceptor = HttpLoggingInterceptor()
+            if (BuildConfig.DEBUG) {
+                //显示日志
+                logInterceptor.level = HttpLoggingInterceptor.Level.BODY
+            } else {
+                logInterceptor.level = HttpLoggingInterceptor.Level.NONE
+            }
+            builder.addInterceptor(logInterceptor)
 
             retrofit = Retrofit.Builder()
                     .client(builder.build())
