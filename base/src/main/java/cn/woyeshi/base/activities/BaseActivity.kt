@@ -102,6 +102,8 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     }
 
+
+
     override fun showLoading(msg: String, cancelable: Boolean) {
         LoadingDialog(this, msg, cancelable).show()
     }
