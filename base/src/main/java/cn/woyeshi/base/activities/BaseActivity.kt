@@ -11,6 +11,9 @@ import android.widget.TextView
 import cn.woyeshi.base.R
 import cn.woyeshi.base.dialogs.LoadingDialog
 import cn.woyeshi.base.utils.AnnotationUtils
+import cn.woyeshi.entity.Constants
+import cn.woyeshi.entity.beans.manager.UserInfo
+import cn.woyeshi.entity.utils.SPHelper
 import cn.woyeshi.presenter.base.IBaseActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -102,7 +105,23 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     }
 
+    fun <T> saveToSP(key: String, value: T) {
+        SPHelper.saveData(this, key, value)
+    }
 
+    fun <T> getFromSP(key: String, c: Class<T>): T? {
+        return SPHelper.getData(this, key, c)
+    }
+
+    //获取当前登录的用户的信息
+    override fun getLoginUserInfo(): UserInfo? {
+        return getFromSP(Constants.SPKeys.KEY_LOGIN_USER_INFO, UserInfo::class.java)
+    }
+
+    //
+    override fun getToken(): String? {
+        return getLoginUserInfo()?.token
+    }
 
     override fun showLoading(msg: String, cancelable: Boolean) {
         LoadingDialog(this, msg, cancelable).show()

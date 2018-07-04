@@ -1,5 +1,6 @@
 package cn.woyeshi.presenter.base
 
+import cn.woyeshi.entity.beans.manager.UserInfo
 import io.reactivex.disposables.Disposable
 
 /**
@@ -18,5 +19,9 @@ interface IBaseView {
     fun showLoading(msg: String, cancelable: Boolean)
 
     fun hideLoading()
+
+    fun getLoginUserInfo(): UserInfo?
+
+    fun getToken(): String?
 
 }

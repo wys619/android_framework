@@ -29,9 +29,9 @@ object RetrofitUtils {
 
             // 添加公共参数拦截器
             val commonInterceptor = HttpCommonInterceptor.Builder()
-                    .addHeaderParams("paltform", "android")
-                    .addHeaderParams("userToken", "1234343434dfdfd3434")
-                    .addHeaderParams("userId", "123445")
+                    .addHeaderParams("paltform", "android")     //平台
+                    .addHeaderParams("token", "")               //令牌
+                    .addHeaderParams("version", "1")            //客户端版本
                     .build()
             builder.addInterceptor(commonInterceptor)
 
