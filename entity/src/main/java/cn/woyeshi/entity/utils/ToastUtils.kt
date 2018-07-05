@@ -5,10 +5,10 @@ import android.widget.Toast
 object ToastUtils {
 
     fun toast(msg: String) {
-        if (ContextHolder.applicationContext == null) {
+        if (ContextHolder.getApplicationContext() == null) {
             return
         }
-        Toast.makeText(ContextHolder.applicationContext, msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(ContextHolder.getApplicationContext(), msg, Toast.LENGTH_SHORT).show()
     }
 
 }
