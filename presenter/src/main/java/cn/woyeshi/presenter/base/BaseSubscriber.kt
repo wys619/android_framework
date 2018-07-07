@@ -27,6 +27,7 @@ abstract class BaseSubscriber<E>(private val observable: Flowable<E>) : Subscrib
                 onFail(e)
             }
             else -> {
+                ToastUtils.toast("服务器内部错误(${e.javaClass.name})")
                 onException(e)
             }
         }
@@ -34,7 +35,6 @@ abstract class BaseSubscriber<E>(private val observable: Flowable<E>) : Subscrib
 
     open fun onException(e: Throwable) {
         e.printStackTrace()
-
     }
 
     open fun onFail(e: BaseException) {

@@ -14,6 +14,7 @@ import cn.woyeshi.base.utils.AnnotationUtils
 import cn.woyeshi.entity.Constants
 import cn.woyeshi.entity.beans.manager.UserInfo
 import cn.woyeshi.entity.utils.SPHelper
+import cn.woyeshi.entity.utils.ToastUtils
 import cn.woyeshi.presenter.base.IBaseActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -109,13 +110,13 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
         SPHelper.saveData(this, key, value)
     }
 
-    fun <T> getFromSP(key: String, c: Class<T>): T? {
+    fun <T> readFromSP(key: String, c: Class<T>): T? {
         return SPHelper.getData(this, key, c)
     }
 
     //获取当前登录的用户的信息
     override fun getLoginUserInfo(): UserInfo? {
-        return getFromSP(Constants.SPKeys.KEY_LOGIN_USER_INFO, UserInfo::class.java)
+        return readFromSP(Constants.SPKeys.KEY_LOGIN_USER_INFO, UserInfo::class.java)
     }
 
     //
@@ -129,6 +130,10 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     override fun hideLoading() {
         LoadingDialog.cancel()
+    }
+
+    fun toast(msg: String) {
+        ToastUtils.toast(msg)
     }
 
     open fun onActivityCreateStart(savedInstanceState: Bundle?) {

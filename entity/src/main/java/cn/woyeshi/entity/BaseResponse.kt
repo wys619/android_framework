@@ -11,4 +11,4 @@ data class BaseResponse<E>(@SerializedName("msg")
                            @SerializedName("code")
                            val code: Int = 0,
                            @SerializedName("data")
-                           val data: E) : Serializable
+                           val data: E?) : Serializable
