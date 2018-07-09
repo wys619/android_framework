@@ -28,6 +28,7 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     private var backBtn: View? = null
     private var tvTitleBar: TextView? = null
+    private var editBtn: TextView? = null
 
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,14 +44,35 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
         }
         backBtn = findViewById(R.id.iv_back)
         tvTitleBar = findViewById(R.id.tv_title)
+        editBtn = findViewById(R.id.tv_edit)
+        editBtn?.setOnClickListener {
+            onEditBtnClick(it as TextView)
+        }
         backBtn?.setOnClickListener {
             onBackBtnClick()
         }
         onActivityCreated(savedInstanceState)
     }
 
+    open fun onEditBtnClick(view: TextView) {
+
+
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+    }
+
+    fun setEditBtnVisibility(flag: Boolean) {
+        if (flag) {
+            editBtn?.visibility = View.VISIBLE
+        } else {
+            editBtn?.visibility = View.GONE
+        }
+    }
+
+    fun setEditBtnText(text: String) {
+        editBtn?.text = text
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {

@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitUtils {
 
-    //    private val BASE_URL = "http://192.168.248.55:8080/"
-    private val BASE_URL = "http://192.168.1.101:8081/"
+        private val BASE_URL = "http://192.168.248.55:8081/"
+//    private val BASE_URL = "http://192.168.1.101:8081/"
 
     private var retrofit: Retrofit? = null
 

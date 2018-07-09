@@ -36,16 +36,17 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:layout_gravity="center"
         android:background="@drawable/selector_bg_trans_gray"
         android:clickable="true"
+        android:visibility="gone"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="编辑"
         android:textColor="@android:color/white"
-        android:textSize="15sp"
-        android:visibility="gone" />
+        android:textSize="15sp" />
 
 
 </RelativeLayout>
