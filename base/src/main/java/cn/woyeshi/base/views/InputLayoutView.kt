@@ -35,6 +35,13 @@ class InputLayoutView : LinearLayout {
             editText2.isEnabled = false
             editText2.textColor = resources.getColor(R.color.n_gray_2)
         }
+        editText2.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && !TextUtils.isEmpty(editText2.text.toString().trim())) {
+                ivClearText.visibility = View.VISIBLE
+            } else {
+                ivClearText.visibility = View.GONE
+            }
+        }
         val title: String? = array.getString(R.styleable.InputLayoutView_title)
         if (!TextUtils.isEmpty(title)) {
             textView58.text = title

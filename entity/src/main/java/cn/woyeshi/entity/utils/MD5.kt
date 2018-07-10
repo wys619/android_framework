@@ -7,7 +7,7 @@ object MD5 {
 
     fun getMD5(buffer: ByteArray): String? {
         Logger.i(TAG, "md5 start time" + System.currentTimeMillis())
-        val hexDigits = charArrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f')
+        val hexDigits = charArrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F')
         try {
             val mdTemp = MessageDigest.getInstance("MD5")
             mdTemp.update(buffer)
