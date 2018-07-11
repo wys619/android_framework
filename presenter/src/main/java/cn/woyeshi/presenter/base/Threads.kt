@@ -14,11 +14,6 @@ import kotlinx.coroutines.experimental.newFixedThreadPoolContext
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
 
-/**
- * Created by charles on 27/12/2017.
- */
-
-
 object Threads {
     private val workerId = AtomicInteger()
     private val ioId = AtomicInteger()

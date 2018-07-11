@@ -54,8 +54,11 @@ object SPHelper {
      * @param key
      * @return
      */
-    fun <T> getData(ctx: Context, key: String, c: Class<T>): T? {
+    fun <T> getData(ctx: Context?, key: String, c: Class<T>): T? {
         if (TextUtils.isEmpty(key)) {
+            return null
+        }
+        if (ctx == null) {
             return null
         }
         val sp = ctx.getSharedPreferences(CURRENT_SP_FILE_NAME, Context.MODE_PRIVATE)

@@ -1,5 +1,9 @@
 package cn.woyeshi.presenter.base
 
+import cn.woyeshi.entity.Constants
+import cn.woyeshi.entity.beans.manager.UserInfo
+import cn.woyeshi.entity.utils.ContextHolder
+import cn.woyeshi.entity.utils.SPHelper
 import cn.woyeshi.presenter.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,8 +14,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitUtils {
 
-//        private val BASE_URL = "http://192.168.248.55:8081/"
-    private val BASE_URL = "http://192.168.1.101:8081/"
+    private val BASE_URL = "https://api.woyeshi.cn/"
+//    private val BASE_URL = "http://192.168.1.101:8081/"
 
     private var retrofit: Retrofit? = null
 
@@ -30,11 +34,15 @@ object RetrofitUtils {
             // 添加公共参数拦截器
             val commonInterceptor = HttpCommonInterceptor.Builder()
                     .addHeaderParams("paltform", "android")     //平台
-                    .addHeaderParams("token", "")               //令牌
+                    .addHeaderParams("token",
+                            (SPHelper.getData(
+                                    ContextHolder.getApplicationContext(),
+                                    Constants.SPKeys.KEY_LOGIN_USER_INFO,
+                                    UserInfo::class.java
+                            )?.token) ?: "")               //令牌
                     .addHeaderParams("version", "1")            //客户端版本
                     .build()
             builder.addInterceptor(commonInterceptor)
-
 
             val logInterceptor = HttpLoggingInterceptor()
             if (BuildConfig.DEBUG) {
