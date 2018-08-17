@@ -1,5 +1,8 @@
 package cn.woyeshi.base.activities
 
+import android.content.Context
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -10,6 +13,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import cn.woyeshi.base.R
 import cn.woyeshi.base.dialogs.LoadingDialog
+import cn.woyeshi.base.dialogs.OneBtnDialog
 import cn.woyeshi.base.utils.AnnotationUtils
 import cn.woyeshi.entity.Constants
 import cn.woyeshi.entity.beans.manager.UserInfo
@@ -32,6 +36,7 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        logI(TAG, "onCreate()")
         onActivityCreateStart(savedInstanceState)
         setContentView(R.layout.activity_base)
         AnnotationUtils.bind(this)
@@ -54,6 +59,16 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
         onActivityCreated(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+        logI(TAG, "onResume()")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        logI(TAG, "onPause()")
+    }
+
     open fun onEditBtnClick(view: TextView) {
 
 
@@ -61,6 +76,7 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     override fun onDestroy() {
         super.onDestroy()
+        logI(TAG, "onDestroy()")
     }
 
     fun setEditBtnVisibility(flag: Boolean) {
@@ -87,6 +103,10 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
         return true
     }
 
+    override fun getBaseActivity(): IBaseActivity? {
+        return this
+    }
+
     override fun setTitle(title: CharSequence) {
         tvTitleBar?.text = title
     }
@@ -98,6 +118,33 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
     open fun onBackBtnClick() {
         finish()
     }                   //点击左上角回退按钮的时候
+
+
+    /**
+     * 检测所有的权限是否都已授权
+     *
+     * @param permissions
+     * @return
+     */
+    fun checkPermissions(activity: AppCompatActivity, permissions: Array<String>): Boolean {
+        if (!isMOrLater()) {
+            return true
+        }
+        for (permission in permissions) {
+            if (activity.checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+                return false
+            }
+        }
+        return true
+    }
+
+
+    /**
+     * 判断是不是M及以上版本
+     */
+    fun isMOrLater(): Boolean {
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+    }
 
     fun setBackBtnVisibility(flag: Boolean) {
         if (flag) {
@@ -152,6 +199,27 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
 
     override fun hideLoading() {
         LoadingDialog.cancel()
+    }
+
+    fun showAlert(msg: String) {
+        showAlert(msg, getString(R.string.string_got_it))
+    }
+
+    fun showAlert(msg: String, btnText: String) {
+        showAlert(msg, btnText) {
+
+        }
+    }
+
+    fun showAlert(msg: String, onOkClick: (() -> Unit)) {
+        showAlert(msg, getString(R.string.string_got_it), onOkClick)
+    }
+
+    fun showAlert(msg: String, btnText: String, onOkClick: (() -> Unit)) {
+        OneBtnDialog.cancelCompanionDialog()
+        OneBtnDialog(this) {
+            onOkClick()
+        }.setBtnText(btnText).setMsg(msg).show()
     }
 
     fun toast(msg: String) {

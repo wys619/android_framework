@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import java.util.HashMap;
+
 import cn.woyeshi.base.R;
 import cn.woyeshi.base.activities.BaseActivity;
 import cn.woyeshi.entity.utils.DensityUtil;
@@ -23,6 +25,8 @@ public abstract class BaseDialog implements DialogInterface.OnCancelListener, Di
     private IOnDismissListener onDismissListener;
     protected View contentView;
     private boolean doNotHideBlurringViewFlag = false;
+    private HashMap<Integer, View> viewMap = new HashMap<>();
+
 
     public BaseDialog(BaseActivity activity) {
         this.activity = activity;
@@ -59,6 +63,19 @@ public abstract class BaseDialog implements DialogInterface.OnCancelListener, Di
     public BaseDialog setOnCancelListener(IOnCancelListener onCancelListener) {
         this.onCancelListener = onCancelListener;
         return this;
+    }
+
+    public <T extends View> T findView(int id) {
+        if (contentView == null) {
+            throw new RuntimeException("call initDialog() first !");
+        }
+        if (viewMap.containsKey(id)) {
+            return (T) viewMap.get(id);
+        } else {
+            View v = contentView.findViewById(id);
+            viewMap.put(id, v);
+            return (T) v;
+        }
     }
 
     public void setOnDismissListener(IOnDismissListener onDismissListener) {

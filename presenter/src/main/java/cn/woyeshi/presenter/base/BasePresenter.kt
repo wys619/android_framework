@@ -1,5 +1,6 @@
 package cn.woyeshi.presenter.base
 
+import android.app.Activity
 import android.util.Log
 import cn.woyeshi.entity.BaseResponse
 import io.reactivex.Flowable
@@ -36,10 +37,9 @@ abstract class BasePresenter<T : IBaseView>(val iView: T) : IBasePresenter<T> {
         }
     }
 
-    protected fun observeUnit(observable: Flowable<BaseResponse<Unit>>): Flowable<BaseResponse<Unit>> {
-        return observable
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+    fun getActivity(): Activity? {
+        val iBaseActivity = iView.getBaseActivity()
+        return iBaseActivity as Activity?
     }
 
     override fun onDestroy() {

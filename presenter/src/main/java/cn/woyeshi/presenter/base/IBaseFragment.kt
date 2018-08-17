@@ -5,6 +5,4 @@ package cn.woyeshi.presenter.base
  */
 interface IBaseFragment : IBaseView {
 
-    fun getBaseActivity(): IBaseActivity?
-
 }

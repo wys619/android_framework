@@ -1,5 +1,6 @@
 package cn.woyeshi.presenter.base
 
+import android.content.Context
 import cn.woyeshi.entity.beans.manager.UserInfo
 import io.reactivex.disposables.Disposable
 
@@ -13,6 +14,8 @@ interface IBaseView {
     fun logW(tag: String, content: String)
 
     fun logE(tag: String, content: String)
+
+    fun getBaseActivity(): IBaseActivity?
 
     fun onDestroy()
 
