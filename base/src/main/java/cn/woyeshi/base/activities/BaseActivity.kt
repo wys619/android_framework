@@ -138,6 +138,13 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
         return true
     }
 
+    fun checkPermission(permission: String): Boolean {
+        if (!isMOrLater()) {
+            return true
+        }
+        return checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
+    }
+
 
     /**
      * 判断是不是M及以上版本

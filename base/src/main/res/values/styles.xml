@@ -29,4 +29,12 @@
         <item name="android:shadowRadius">0</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
+
+    <style name="dialogWindowAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_show</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_hide</item>
+    </style>
+
+
 </resources>
