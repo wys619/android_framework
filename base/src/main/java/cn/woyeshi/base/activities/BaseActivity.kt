@@ -1,6 +1,5 @@
 package cn.woyeshi.base.activities
 
-import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -20,8 +19,6 @@ import cn.woyeshi.entity.beans.manager.UserInfo
 import cn.woyeshi.entity.utils.SPHelper
 import cn.woyeshi.entity.utils.ToastUtils
 import cn.woyeshi.presenter.base.IBaseActivity
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 
 /**
  * Created by wys on 2017/11/8.

@@ -38,6 +38,10 @@ class LoadingDialog(activity: BaseActivity, var msg: String?, private var cancel
         }
     }
 
+    override fun getDimAmount(): Float {
+        return 0.4f
+    }
+
     override fun show() {
         super.show()
         loadingDialog = this
