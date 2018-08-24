@@ -46,7 +46,6 @@ object RetrofitUtils {
 
             val logInterceptor = HttpLoggingInterceptor()
             if (BuildConfig.DEBUG) {
-                //显示日志
                 logInterceptor.level = HttpLoggingInterceptor.Level.BODY
             } else {
                 logInterceptor.level = HttpLoggingInterceptor.Level.NONE

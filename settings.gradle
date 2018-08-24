@@ -1,1 +1,1 @@
-include ':app', ':entity', ':base', ':presenter', ':presenterimpl', ':libs', ':lib_map', ":lib_ucrop"
+include ':app', ':entity', ':base', ':presenter', ':presenterimpl', ':libs', ':lib_map', ':lib_date_picker', ":lib_ucrop"
