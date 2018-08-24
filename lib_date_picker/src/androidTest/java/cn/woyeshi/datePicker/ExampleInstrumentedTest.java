@@ -1,4 +1,4 @@
-package cn.woyeshi.date_picker;
+package cn.woyeshi.datePicker;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

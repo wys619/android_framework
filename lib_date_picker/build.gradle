@@ -21,6 +21,8 @@ android {
         }
     }
 
+    resourcePrefix 'date_pick_'
+
 }
 
 dependencies {

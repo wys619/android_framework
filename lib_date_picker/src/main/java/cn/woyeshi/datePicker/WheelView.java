@@ -17,7 +17,7 @@
  *  limitations under the License.
  */
 
-package cn.woyeshi.date_picker;
+package cn.woyeshi.datePicker;
 
 import android.content.Context;
 import android.database.DataSetObserver;
@@ -36,7 +36,7 @@ import android.widget.LinearLayout;
 import java.util.LinkedList;
 import java.util.List;
 
-import cn.woyeshi.date_picker.adapter.WheelViewAdapter;
+import cn.woyeshi.datePicker.adapter.WheelViewAdapter;
 
 /**
  * Numeric wheel view.
@@ -82,8 +82,8 @@ public class WheelView extends View {
     private Drawable centerDrawable;
 
     // Wheel drawables
-    private int wheelBackground = R.drawable.wheel_bg;
-    private int wheelForeground = R.drawable.wheel_val;
+    private int wheelBackground = cn.woyeshi.datePicker.R.drawable.date_pick_wheel_bg;
+    private int wheelForeground = cn.woyeshi.datePicker.R.drawable.date_pick_wheel_val;
 
     // Shadows drawables
     private GradientDrawable topShadow;
@@ -702,7 +702,7 @@ public class WheelView extends View {
 		centerDrawable.draw(canvas);
 		//*/
         Paint paint = new Paint();
-        paint.setColor(getResources().getColor(R.color.province_line_border));
+        paint.setColor(getResources().getColor(cn.woyeshi.datePicker.R.color.date_pick_province_line_border));
         // 设置线宽
 //		paint.setStrokeWidth((float) 3);
         paint.setStrokeWidth((float) 2);

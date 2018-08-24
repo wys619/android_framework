@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="date_picker_shareDialogStyle" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:fadeEnabled">true</item>
+        <item name="android:fadeDuration">1500</item>
+        <item name="android:shadowColor">@android:color/black</item>
+        <item name="android:shadowDx">50</item>
+        <item name="android:shadowDy">50</item>
+        <item name="android:shadowRadius">0</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="date_picker_dialogWindowAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/date_pick_anim_dialog_show</item>
+        <item name="android:windowExitAnimation">@anim/date_pick_anim_dialog_hide</item>
+    </style>
+
+</resources>

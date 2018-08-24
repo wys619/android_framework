@@ -14,12 +14,12 @@
  *  limitations under the License.
  */
 
-package cn.woyeshi.date_picker.adapter;
+package cn.woyeshi.datePicker.adapter;
 
 
 import android.content.Context;
 
-import cn.woyeshi.date_picker.WheelAdapter;
+import cn.woyeshi.datePicker.WheelAdapter;
 
 
 /**

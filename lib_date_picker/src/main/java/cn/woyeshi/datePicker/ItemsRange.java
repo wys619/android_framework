@@ -17,7 +17,7 @@
  *  limitations under the License.
  */
 
-package cn.woyeshi.date_picker;
+package cn.woyeshi.datePicker;
 
 /**
  * Range for visible items.
