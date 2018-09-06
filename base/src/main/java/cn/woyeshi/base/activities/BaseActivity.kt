@@ -1,6 +1,7 @@
 package cn.woyeshi.base.activities
 
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -34,6 +35,8 @@ abstract class BaseActivity : AppCompatActivity(), IBaseActivity {
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         logI(TAG, "onCreate()")
+//        window.statusBarColor = Color.TRANSPARENT
+//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
         onActivityCreateStart(savedInstanceState)
         setContentView(R.layout.activity_base)
         AnnotationUtils.bind(this)
