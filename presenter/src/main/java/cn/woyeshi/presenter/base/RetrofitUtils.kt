@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitUtils {
 
-    //    private val BASE_URL = "https://api.woyeshi.cn/"
-    private val BASE_URL = "http://192.168.1.117:8081/"
+        private val BASE_URL = "https://api.woyeshi.cn/"
+//    private val BASE_URL = "http://192.168.1.117:8081/"
 
     private var retrofit: Retrofit? = null
 

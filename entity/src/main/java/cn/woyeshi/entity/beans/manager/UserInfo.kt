@@ -11,7 +11,7 @@ data class UserInfo(@SerializedName("birthday")
                     @SerializedName("gender")
                     var gender: String = "",
                     @SerializedName("city")
-                    val city: String = "",
+                    var city: String = "",
                     @SerializedName("userName")
                     val userName: String = "",
                     @SerializedName("userId")
