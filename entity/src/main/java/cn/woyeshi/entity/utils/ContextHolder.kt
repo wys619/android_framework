@@ -4,6 +4,9 @@ import android.content.Context
 import java.lang.ref.WeakReference
 
 object ContextHolder {
+
+    var token: String = ""
+
     private var contextWeakReference: WeakReference<Context>? = null
 
     fun setApplicationContext(context: WeakReference<Context>) {

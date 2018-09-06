@@ -2,6 +2,7 @@ package cn.woyeshi.presenter.base
 
 import cn.woyeshi.entity.Constants
 import cn.woyeshi.entity.beans.manager.UserInfo
+import cn.woyeshi.entity.utils.ApkInfoUtils
 import cn.woyeshi.entity.utils.ContextHolder
 import cn.woyeshi.entity.utils.SPHelper
 import cn.woyeshi.presenter.BuildConfig
@@ -14,18 +15,21 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitUtils {
 
-    private val BASE_URL = "https://api.woyeshi.cn/"
-//    private val BASE_URL = "http://192.168.1.101:8081/"
+    //    private val BASE_URL = "https://api.woyeshi.cn/"
+    private val BASE_URL = "http://192.168.1.117:8081/"
 
     private var retrofit: Retrofit? = null
 
     private val DEFAULT_TIME_OUT = 5                //超时时间 5s
     private val DEFAULT_READ_TIME_OUT = 10
 
+    private var accessToken: String = ""
+
     private fun initRetrofit(): Retrofit {
         if (retrofit == null) {
-
+            accessToken = SPHelper.getData(ContextHolder.getApplicationContext(), Constants.SPKeys.KEY_LOGIN_USER_INFO, UserInfo::class.java)?.token ?: ""
             // 创建 OKHttpClient
+            ContextHolder.token = accessToken
             val builder = OkHttpClient.Builder()
             builder.connectTimeout(DEFAULT_TIME_OUT.toLong(), TimeUnit.SECONDS)//连接超时时间
             builder.writeTimeout(DEFAULT_READ_TIME_OUT.toLong(), TimeUnit.SECONDS)//写操作 超时时间
@@ -34,13 +38,8 @@ object RetrofitUtils {
             // 添加公共参数拦截器
             val commonInterceptor = HttpCommonInterceptor.Builder()
                     .addHeaderParams("paltform", "android")     //平台
-                    .addHeaderParams("token",
-                            (SPHelper.getData(
-                                    ContextHolder.getApplicationContext(),
-                                    Constants.SPKeys.KEY_LOGIN_USER_INFO,
-                                    UserInfo::class.java
-                            )?.token) ?: "")               //令牌
-                    .addHeaderParams("version", "1")            //客户端版本
+                    .addHeaderParams("token", accessToken)      //令牌
+                    .addHeaderParams("version", ApkInfoUtils.getVersionCode(ContextHolder.getApplicationContext()))            //客户端版本
                     .build()
             builder.addInterceptor(commonInterceptor)
 
@@ -69,6 +68,9 @@ object RetrofitUtils {
      * @return </T>
      */
     fun <T> create(service: Class<T>): T {
+        if (accessToken != ContextHolder.token) {           //token发生改变，就重新弄构造请求实例
+            retrofit = null
+        }
         if (retrofit == null) {
             initRetrofit()
         }
