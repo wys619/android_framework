@@ -1,6 +1,10 @@
 package cn.woyeshi.base.fragments
 
+import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import cn.woyeshi.entity.beans.manager.UserInfo
 import cn.woyeshi.presenter.base.IBaseActivity
 import cn.woyeshi.presenter.base.IBaseFragment
@@ -8,7 +12,13 @@ import cn.woyeshi.presenter.base.IBaseFragment
 /**
  * Created by wys on 2017/11/8.
  */
-class BaseFragment : Fragment(), IBaseFragment {
+abstract class BaseFragment : Fragment(), IBaseFragment {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(getLayoutId(), null, false)
+    }
+
+    abstract fun getLayoutId(): Int
 
     override fun getBaseActivity(): IBaseActivity? {
         return activity as IBaseActivity?
